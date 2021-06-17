@@ -1,0 +1,28 @@
+[
+  {
+    "repository"  : "hardware_oneplus",
+    "target_path" : "hardware/oneplus"
+  },
+  {
+    "repository"  : "kernel_oneplus_sm8250",
+    "target_path" : "kernel/oneplus/sm8250"
+  },
+  {
+    "repository"  : "vendor_oneplus-new",
+    "target_path" : "vendor/oneplus"
+  },
+  {
+    "remote"      : "github",
+    "repository"  : "kdrag0n/proton-clang",
+    "branch"      : "master",
+    "clone-depth" : "1",
+    "target_path" : "prebuilts/clang/host/linux-x86/clang-proton"
+  },
+  {
+    "remote"      : "gitlab",
+    "repository"  : "anierin.t.bliss/vendor_oneplus_camera",
+    "branch"      : "sm8250",
+    "clone-depth" : "1",
+    "target_path" : "vendor/oneplus/camera/sm8250"
+  }
+]

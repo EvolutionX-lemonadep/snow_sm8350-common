@@ -32,6 +32,11 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/oneplus/sm8350-common/sm8350-common-vendor.mk)
 
+# Inherit OP Camera & gallery packages
+ifeq ($(TARGET_SHIPS_OOSCAM),true)
+$(call inherit-product, vendor/oneplus/camera/sm8250/config.mk)
+endif
+
 # Additional native libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
@@ -201,7 +206,7 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
-    Snap \
+    libcamera2ndk_vendor \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
 # Common init scripts
@@ -218,6 +223,7 @@ PRODUCT_PACKAGES += \
     init.oem_ftm.rc \
     init.oem_rf.rc \
     init.oplus_chg.sh \
+    init.opcamera.rc \
     init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
     init.qcom.factory.rc \
@@ -339,6 +345,8 @@ PRODUCT_PACKAGES += \
 # HIDL
 PRODUCT_PACKAGES += \
     libhidltransport.vendor \
+    libhidltransport \
+    libhwbinder \
     libhwbinder.vendor
 
 # HotwordEnrollement app permissions
